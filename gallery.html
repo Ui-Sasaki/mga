@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Photo Gallery - Mrs. GREEN APPLE</title>
+ <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+
+
+ <section class="photo-gallery">
+   <h1>Photo Gallery</h1>
+    <!-- Filter Tabs -->
+   <div class="gallery-tabs">
+     <button class="tab-button active" data-target="all">All</button>
+     <button class="tab-button motoki" data-target="motoki">Motoki Ohmori</button>
+     <button class="tab-button wakai" data-target="wakai">Wakai Hiroto</button>
+     <button class="tab-button ryoka" data-target="ryoka">Fujisawa Ryoka</button>
+   </div>
+    <!-- Image Sections -->
+   <div class="gallery-grid all">
+     <img src="assets/all1.jpg" alt="All 1">
+     <img src="assets/all2.jpg" alt="All 2">
+   </div>
+    <div class="gallery-grid motoki hidden">
+     <img src="assets/motoki1.jpg" alt="Motoki 1">
+     <img src="assets/motoki2.jpg" alt="Motoki 2">
+   </div>
+    <div class="gallery-grid wakai hidden">
+     <img src="assets/wakai1.jpg" alt="Wakai 1">
+     <img src="assets/wakai2.jpg" alt="Wakai 2">
+   </div>
+    <div class="gallery-grid ryoka hidden">
+     <img src="assets/ryoka1.jpg" alt="Ryoka 1">
+     <img src="assets/ryoka2.jpg" alt="Ryoka 2">
+   </div>
+ </section>
+
+
+ <script>
+   const tabs = document.querySelectorAll('.tab-button');
+   const galleries = document.querySelectorAll('.gallery-grid');
+    tabs.forEach(tab => {
+     tab.addEventListener('click', () => {
+       tabs.forEach(btn => btn.classList.remove('active'));
+       tab.classList.add('active');
+        const target = tab.dataset.target;
+        galleries.forEach(grid => {
+         grid.classList.add('hidden');
+         if (grid.classList.contains(target)) {
+           grid.classList.remove('hidden');
+         }
+       });
+     });
+   });
+ </script>
+</body>
+</html>
